@@ -5,6 +5,7 @@ import DrawButton from "@/components/DrawButton";
 import GroupResults from "@/components/GroupResults";
 import SummaryTable from "@/components/SummaryTable";
 import ExportButton from "@/components/ExportButton";
+import ImportExcelButton from "@/components/ImportExcelButton";
 import { drawGroups } from "@/lib/lotteryUtils";
 import { toast } from "@/hooks/use-toast";
 import { Dices } from "lucide-react";
@@ -53,6 +54,16 @@ const Index = () => {
       title: "ลบผู้เข้าร่วมแล้ว",
       variant: "destructive",
     });
+  };
+
+  const handleImportParticipants = (importedParticipants: Omit<Participant, "id">[]) => {
+    const newParticipants = importedParticipants.map((p, index) => ({
+      ...p,
+      id: nextId + index,
+    }));
+    setParticipants([...participants, ...newParticipants]);
+    setNextId(nextId + importedParticipants.length);
+    setGroups(null);
   };
 
   const handleDraw = async () => {
@@ -131,7 +142,12 @@ const Index = () => {
         </div>
 
         {/* Add Participant Form */}
-        <ParticipantForm onAdd={handleAddParticipant} />
+        <div className="space-y-4">
+          <ParticipantForm onAdd={handleAddParticipant} />
+          <div className="flex justify-center">
+            <ImportExcelButton onImport={handleImportParticipants} />
+          </div>
+        </div>
 
         {/* Participant List */}
         <div className="space-y-4">
