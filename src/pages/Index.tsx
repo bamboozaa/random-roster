@@ -4,6 +4,7 @@ import ParticipantList from "@/components/ParticipantList";
 import DrawButton from "@/components/DrawButton";
 import GroupResults from "@/components/GroupResults";
 import SummaryTable from "@/components/SummaryTable";
+import ExportButton from "@/components/ExportButton";
 import { drawGroups } from "@/lib/lotteryUtils";
 import { toast } from "@/hooks/use-toast";
 import { Dices } from "lucide-react";
@@ -133,7 +134,17 @@ const Index = () => {
         <ParticipantForm onAdd={handleAddParticipant} />
 
         {/* Participant List */}
-        <ParticipantList participants={participants} onDelete={handleDeleteParticipant} />
+        <div className="space-y-4">
+          <div className="flex justify-between items-center">
+            <h2 className="text-2xl font-bold">รายชื่อผู้เข้าร่วม</h2>
+            <ExportButton 
+              participants={participants} 
+              groups={groups?.groups} 
+              summary={groups?.summary} 
+            />
+          </div>
+          <ParticipantList participants={participants} onDelete={handleDeleteParticipant} />
+        </div>
 
         {/* Draw Button */}
         <DrawButton
