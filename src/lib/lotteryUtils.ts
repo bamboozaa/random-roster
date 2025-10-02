@@ -31,7 +31,7 @@ function shuffleArray<T>(array: T[]): T[] {
   return shuffled;
 }
 
-export function drawGroups(participants: Participant[], numberOfGroups: number = 3) {
+export function drawGroups(participants: Participant[], groupNames: string[]) {
   if (participants.length === 0) {
     throw new Error("No participants to draw from");
   }
@@ -41,14 +41,14 @@ export function drawGroups(participants: Participant[], numberOfGroups: number =
 
   // Initialize groups
   const groups: Record<string, Participant[]> = {};
-  for (let i = 1; i <= numberOfGroups; i++) {
-    groups[`${i}`] = [];
-  }
+  groupNames.forEach((name) => {
+    groups[name] = [];
+  });
 
   // Distribute participants evenly
   shuffled.forEach((participant, index) => {
-    const groupNumber = (index % numberOfGroups) + 1;
-    groups[`${groupNumber}`].push(participant);
+    const groupIndex = index % groupNames.length;
+    groups[groupNames[groupIndex]].push(participant);
   });
 
   // Calculate summary

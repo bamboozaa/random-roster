@@ -33,6 +33,13 @@ interface DrawResult {
 }
 
 const Index = () => {
+  const groupNames = [
+    "กลุ่มทิศเหนือ (อุดร)",
+    "กลุ่มทิศใต้ (ทักษิณ)",
+    "กลุ่มทิศตะวันออก (บูรพา)",
+    "กลุ่มทิศตะวันตก (ประจิม)"
+  ];
+
   const [participants, setParticipants] = useState<Participant[]>([]);
   const [groups, setGroups] = useState<DrawResult | null>(null);
   const [loading, setLoading] = useState(false);
@@ -67,10 +74,10 @@ const Index = () => {
   };
 
   const handleDraw = async () => {
-    if (participants.length < 3) {
+    if (participants.length < 4) {
       toast({
         title: "ไม่สามารถจับสลากได้",
-        description: "ต้องมีผู้เข้าร่วมอย่างน้อย 3 คน",
+        description: "ต้องมีผู้เข้าร่วมอย่างน้อย 4 คน",
         variant: "destructive",
       });
       return;
@@ -82,7 +89,7 @@ const Index = () => {
     // Simulate loading for better UX
     setTimeout(() => {
       try {
-        const result = drawGroups(participants, 3);
+        const result = drawGroups(participants, groupNames);
         setGroups(result);
         toast({
           title: "จับสลากสำเร็จ! 🎉",
@@ -106,7 +113,7 @@ const Index = () => {
 
     setTimeout(() => {
       try {
-        const result = drawGroups(participants, 3);
+        const result = drawGroups(participants, groupNames);
         setGroups(result);
         toast({
           title: "จับสลากใหม่สำเร็จ! 🎲",
@@ -168,7 +175,7 @@ const Index = () => {
           isLoading={loading}
           onDraw={handleDraw}
           onReDraw={handleReDraw}
-          disabled={participants.length < 3}
+          disabled={participants.length < 4}
         />
 
         {/* Results */}
