@@ -14,10 +14,10 @@ interface GroupStats {
   total: number;
   ชาย: number;
   หญิง: number;
-  "ต่ำกว่า20": number;
-  "20-29": number;
-  "30-39": number;
-  "40+": number;
+  "Gen Z": number;
+  "Gen Y": number;
+  "Gen X": number;
+  "59+": number;
 }
 
 interface ExportButtonProps {
@@ -72,10 +72,10 @@ const ExportButton = ({ participants, groups, summary }: ExportButtonProps) => {
         รวม: stats.total,
         ชาย: stats.ชาย,
         หญิง: stats.หญิง,
-        "ต่ำกว่า20": stats["ต่ำกว่า20"],
-        "20-29": stats["20-29"],
-        "30-39": stats["30-39"],
-        "40+": stats["40+"],
+        "Gen Z": stats["Gen Z"],
+        "Gen Y": stats["Gen Y"],
+        "Gen X": stats["Gen X"],
+        "59+": stats["59+"],
       }));
       const ws3 = XLSX.utils.json_to_sheet(summaryData);
       XLSX.utils.book_append_sheet(workbook, ws3, "สรุปความสมดุล");

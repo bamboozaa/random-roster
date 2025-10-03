@@ -23,10 +23,10 @@ interface GroupStats {
   total: number;
   ชาย: number;
   หญิง: number;
-  "ต่ำกว่า20": number;
-  "20-29": number;
-  "30-39": number;
-  "40+": number;
+  "Gen Z": number;
+  "Gen Y": number;
+  "Gen X": number;
+  "59+": number;
 }
 
 interface DrawResult {

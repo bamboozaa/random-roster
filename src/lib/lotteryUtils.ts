@@ -9,17 +9,17 @@ interface GroupStats {
   total: number;
   ชาย: number;
   หญิง: number;
-  "ต่ำกว่า20": number;
-  "20-29": number;
-  "30-39": number;
-  "40+": number;
+  "Gen Z": number;
+  "Gen Y": number;
+  "Gen X": number;
+  "59+": number;
 }
 
 function getAgeGroup(age: number): string {
-  if (age < 20) return "ต่ำกว่า20";
-  if (age < 30) return "20-29";
-  if (age < 40) return "30-39";
-  return "40+";
+  if (age <= 27) return "Gen Z";
+  if (age <= 42) return "Gen Y";
+  if (age <= 58) return "Gen X";
+  return "59+";
 }
 
 function shuffleArray<T>(array: T[]): T[] {
@@ -59,10 +59,10 @@ export function drawGroups(participants: Participant[], groupNames: string[]) {
       total: members.length,
       ชาย: 0,
       หญิง: 0,
-      "ต่ำกว่า20": 0,
-      "20-29": 0,
-      "30-39": 0,
-      "40+": 0,
+      "Gen Z": 0,
+      "Gen Y": 0,
+      "Gen X": 0,
+      "59+": 0,
     };
 
     members.forEach((member) => {

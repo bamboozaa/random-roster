@@ -5,10 +5,10 @@ interface GroupStats {
   total: number;
   ชาย: number;
   หญิง: number;
-  "ต่ำกว่า20": number;
-  "20-29": number;
-  "30-39": number;
-  "40+": number;
+  "Gen Z": number;
+  "Gen Y": number;
+  "Gen X": number;
+  "59+": number;
 }
 
 interface SummaryTableProps {
@@ -33,10 +33,10 @@ export default function SummaryTable({ summary }: SummaryTableProps) {
                 <th className="px-4 py-3 text-center font-bold text-foreground">รวม</th>
                 <th className="px-4 py-3 text-center font-bold text-foreground">ชาย</th>
                 <th className="px-4 py-3 text-center font-bold text-foreground">หญิง</th>
-                <th className="px-4 py-3 text-center font-bold text-foreground text-sm">{'<'}20</th>
-                <th className="px-4 py-3 text-center font-bold text-foreground">20-29</th>
-                <th className="px-4 py-3 text-center font-bold text-foreground">30-39</th>
-                <th className="px-4 py-3 text-center font-bold text-foreground">40+</th>
+                <th className="px-4 py-3 text-center font-bold text-foreground">Gen Z</th>
+                <th className="px-4 py-3 text-center font-bold text-foreground">Gen Y</th>
+                <th className="px-4 py-3 text-center font-bold text-foreground">Gen X</th>
+                <th className="px-4 py-3 text-center font-bold text-foreground">59+</th>
               </tr>
             </thead>
             <tbody>
@@ -51,10 +51,10 @@ export default function SummaryTable({ summary }: SummaryTableProps) {
                   <td className="px-4 py-3 text-center font-bold text-primary">{stats.total}</td>
                   <td className="px-4 py-3 text-center text-foreground">{stats["ชาย"]}</td>
                   <td className="px-4 py-3 text-center text-foreground">{stats["หญิง"]}</td>
-                  <td className="px-4 py-3 text-center text-foreground">{stats["ต่ำกว่า20"]}</td>
-                  <td className="px-4 py-3 text-center text-foreground">{stats["20-29"]}</td>
-                  <td className="px-4 py-3 text-center text-foreground">{stats["30-39"]}</td>
-                  <td className="px-4 py-3 text-center text-foreground">{stats["40+"]}</td>
+                  <td className="px-4 py-3 text-center text-foreground">{stats["Gen Z"]}</td>
+                  <td className="px-4 py-3 text-center text-foreground">{stats["Gen Y"]}</td>
+                  <td className="px-4 py-3 text-center text-foreground">{stats["Gen X"]}</td>
+                  <td className="px-4 py-3 text-center text-foreground">{stats["59+"]}</td>
                 </tr>
               ))}
             </tbody>
