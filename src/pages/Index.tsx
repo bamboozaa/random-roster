@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { drawGroups } from "@/lib/lotteryUtils";
 import { generateSampleParticipants } from "@/lib/sampleData";
 import { toast } from "@/hooks/use-toast";
-import { Dices, Users } from "lucide-react";
+import { Dices } from "lucide-react";
 
 interface Participant {
   id: number;
@@ -75,20 +75,6 @@ const Index = () => {
     setGroups(null);
   };
 
-  const handleLoadSampleData = () => {
-    const sampleData = generateSampleParticipants(100);
-    const newParticipants = sampleData.map((p, index) => ({
-      ...p,
-      id: nextId + index,
-    }));
-    setParticipants(newParticipants);
-    setNextId(nextId + 100);
-    setGroups(null);
-    toast({
-      title: "โหลดข้อมูลตัวอย่างสำเร็จ",
-      description: "เพิ่มข้อมูลตัวอย่าง 100 คนแล้ว",
-    });
-  };
 
   const handleDraw = async () => {
     if (participants.length < 4) {
@@ -168,16 +154,8 @@ const Index = () => {
         {/* Add Participant Form */}
         <div className="space-y-4">
           <ParticipantForm onAdd={handleAddParticipant} />
-          <div className="flex justify-center gap-3">
+          <div className="flex justify-center">
             <ImportExcelButton onImport={handleImportParticipants} />
-            <Button 
-              onClick={handleLoadSampleData} 
-              variant="outline" 
-              className="gap-2"
-            >
-              <Users className="w-4 h-4" />
-              โหลดข้อมูลตัวอย่าง 100 คน
-            </Button>
           </div>
         </div>
 
