@@ -36,10 +36,10 @@ interface DrawResult {
 
 const Index = () => {
   const groupNames = [
-    "กลุ่มทิศเหนือ (อุดร)",
-    "กลุ่มทิศใต้ (ทักษิณ)",
-    "กลุ่มทิศตะวันออก (บูรพา)",
-    "กลุ่มทิศตะวันตก (ประจิม)"
+    "กลุ่มสิงห์เหนือ (North Lion)",
+    "กลุ่มเสือใต้ (South Tiger)",
+    "กลุ่มเหยี่ยวตะวันออก (East Seahawk)",
+    "กลุ่มอินทรีตะวันตก (West Eagle)"
   ];
 
   const [participants, setParticipants] = useState<Participant[]>([]);
