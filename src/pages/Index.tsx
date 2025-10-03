@@ -161,14 +161,7 @@ const Index = () => {
 
         {/* Participant List */}
         <div className="space-y-4">
-          <div className="flex justify-between items-center">
-            <h2 className="text-2xl font-bold">รายชื่อผู้เข้าร่วม</h2>
-            <ExportButton 
-              participants={participants} 
-              groups={groups?.groups} 
-              summary={groups?.summary} 
-            />
-          </div>
+          <h2 className="text-2xl font-bold">รายชื่อผู้เข้าร่วม</h2>
           <ParticipantList participants={participants} onDelete={handleDeleteParticipant} />
         </div>
 
@@ -186,6 +179,13 @@ const Index = () => {
           <div className="space-y-8 animate-ticket">
             <GroupResults groups={groups.groups} />
             <SummaryTable summary={groups.summary} />
+            <div className="flex justify-center">
+              <ExportButton 
+                participants={participants} 
+                groups={groups.groups} 
+                summary={groups.summary} 
+              />
+            </div>
           </div>
         )}
       </div>
