@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Upload, FileDown } from "lucide-react";
+import { Upload } from "lucide-react";
 import * as XLSX from "xlsx";
 import { toast } from "@/hooks/use-toast";
 import { useRef } from "react";
@@ -17,31 +17,6 @@ interface ImportExcelButtonProps {
 const ImportExcelButton = ({ onImport }: ImportExcelButtonProps) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleDownloadTemplate = () => {
-    const template = [
-      { ชื่อ: "ตัวอย่าง 1", เพศ: "ชาย", อายุ: 25 },
-      { ชื่อ: "ตัวอย่าง 2", เพศ: "หญิง", อายุ: 30 },
-      { ชื่อ: "ตัวอย่าง 3", เพศ: "ชาย", อายุ: 22 },
-    ];
-
-    const worksheet = XLSX.utils.json_to_sheet(template);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "รายชื่อผู้เข้าร่วม");
-
-    // ปรับความกว้างคอลัมน์
-    worksheet["!cols"] = [
-      { wch: 20 }, // ชื่อ
-      { wch: 10 }, // เพศ
-      { wch: 10 }, // อายุ
-    ];
-
-    XLSX.writeFile(workbook, "template_รายชื่อผู้เข้าร่วม.xlsx");
-
-    toast({
-      title: "ดาวน์โหลด Template สำเร็จ! 📥",
-      description: "กรุณากรอกข้อมูลในไฟล์ Excel แล้ว Import กลับเข้ามา",
-    });
-  };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -122,7 +97,7 @@ const ImportExcelButton = ({ onImport }: ImportExcelButtonProps) => {
   };
 
   return (
-    <div className="flex gap-2">
+    <div>
       <input
         ref={fileInputRef}
         type="file"
@@ -130,15 +105,6 @@ const ImportExcelButton = ({ onImport }: ImportExcelButtonProps) => {
         onChange={handleFileUpload}
         className="hidden"
       />
-      
-      <Button
-        onClick={handleDownloadTemplate}
-        variant="outline"
-        className="gap-2"
-      >
-        <FileDown className="w-4 h-4" />
-        Template
-      </Button>
 
       <Button
         onClick={handleImportClick}
